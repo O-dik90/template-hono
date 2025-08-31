@@ -1,17 +1,25 @@
-import { pinoLogger } from 'hono-pino'
-import pino from 'pino'
-import pretty from "pino-pretty";
+import { pinoLogger as logger } from "hono-pino";
+import pino from "pino";
 
 import env from "@/env.js";
 
-function logger() {
-
-  return pinoLogger({
+export function pinoLogger() {
+  return logger({
     pino: pino({
-      level: "info",
-      timestamp: pino.stdTimeFunctions.unixTime, // hh:mm:ss
-    }, env.NODE_ENV === "production" ? undefined : pretty()),
-  })
+      level: env.LOG_LEVEL || (env.NODE_ENV === "development" ? "debug" : "info"),
+      transport: env.NODE_ENV === "development"
+        ? {
+            target: "pino-pretty",
+            options: {
+              colorize: true,
+              translateTime: "SYS:standard",
+              ignore: "pid,hostname",
+            },
+          }
+        : undefined,
+    }),
+    http: {
+      reqId: () => crypto.randomUUID(),
+    },
+  });
 }
-
-export default logger

@@ -29,9 +29,6 @@ importers:
       pino:
         specifier: ^9.9.0
         version: 9.9.0
-      pino-pretty:
-        specifier: ^13.1.1
-        version: 13.1.1
       stoker:
         specifier: ^2.0.1
         version: 2.0.1(@asteasolutions/zod-to-openapi@8.1.0(zod@4.1.5))(@hono/zod-openapi@1.1.0(hono@4.9.5)(zod@4.1.5))(hono@4.9.5)(openapi3-ts@4.5.0)
@@ -51,6 +48,9 @@ importers:
       eslint-plugin-format:
         specifier: ^1.0.1
         version: 1.0.1(eslint@9.34.0)
+      pino-pretty:
+        specifier: ^13.1.1
+        version: 13.1.1
       tsx:
         specifier: ^4.7.1
         version: 4.20.5
