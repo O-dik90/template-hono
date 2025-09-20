@@ -14,7 +14,7 @@ const routes = [
 ] as const;
 
 routes.forEach((route) => {
-  app.route("/", route);
+  app.route("/api/v1", route);
 });
 
 app.get("/session", protect, (c) => {

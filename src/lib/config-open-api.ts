@@ -17,6 +17,10 @@ function configOpenAPI(app: AppOpenAPI) {
   app.get(
     "/ref",
     Scalar({
+      sources:[
+        { url: "/docs", title: "API" },
+        { url: "/api/auth/open-api/generate-schema", title: "Auth" },
+      ],
       url: "/docs",
       theme: "kepler",
       layout: "classic",

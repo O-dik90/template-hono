@@ -5,7 +5,6 @@ import { createErrorSchema, IdParamsSchema } from "stoker/openapi/schemas";
 
 import { createTaskSchema, messageSchema, selectTasksSchema, updateTasksSchema } from "@/db/schema/tasks";
 import { notFoundSchema } from "@/lib/constants";
-import { protect } from "@/middlewares/protect";
 
 const tags = ["Tasks"];
 
@@ -13,7 +12,6 @@ const get_list = createRoute({
   path: "/tasks",
   method: "get",
   tags,
-  middleware: protect,
   responses: {
     [HttpStatusCode.OK]: jsonContent(
       z.array(selectTasksSchema),
@@ -26,7 +24,6 @@ const create = createRoute({
   path: "/tasks",
   method: "post",
   tags,
-  middleware: protect,
   request: {
     body: jsonContentRequired(
       createTaskSchema,
@@ -49,7 +46,6 @@ const get_item = createRoute({
   path: "/tasks/{id}",
   method: "get",
   tags,
-  middleware: protect,
   request:{
     params: IdParamsSchema
   },
@@ -73,7 +69,6 @@ const update_item = createRoute({
   path: "tasks/{id}",
   method: "put",
   tags,
-  middleware: protect,
   request:{
     params: IdParamsSchema,
     body: jsonContent(
@@ -101,7 +96,6 @@ const remove_item = createRoute({
   path: "tasks/{id}",
   method: "delete",
   tags,
-  middleware: protect,
   request: {
     params: IdParamsSchema
   },
