@@ -4,6 +4,7 @@ import { z } from "zod";
 
 import { toZodV4SchemaTyped } from "@/lib/zod-utils";
 
+// -> Define Table Tasks
 export const tasks = sqliteTable("tasks", {
   id: integer({ mode: "number" })
     .primaryKey({ autoIncrement: true }),
@@ -18,6 +19,8 @@ export const tasks = sqliteTable("tasks", {
     .$onUpdate(() => new Date()),
 });
 
+
+// -> typeof CRUD 
 const insertTasks = createInsertSchema(
   tasks,
   {
@@ -37,9 +40,7 @@ const message = z.object({
 
 const selectTasksSchema = toZodV4SchemaTyped(createSelectSchema(tasks));
 const createTaskSchema = toZodV4SchemaTyped(insertTasks);
-
-// @ts-expect-error partial exists on zod v4 type
-const updateTasksSchema = createTaskSchema.partial();
+const updateTasksSchema = toZodV4SchemaTyped(insertTasks.partial());
 
 const messageSchema = toZodV4SchemaTyped(message);
 export { createTaskSchema, messageSchema, selectTasksSchema, updateTasksSchema };

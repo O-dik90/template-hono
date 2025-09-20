@@ -4,7 +4,7 @@ import env from "@/env";
 
 export default defineConfig({
   dialect: "sqlite",
-  schema: "./src/db/schema.ts",
+  schema: "./src/db/schema",
   out: "./src/db/drizzle",
   casing: "snake_case",
   dbCredentials: {

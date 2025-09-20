@@ -20,7 +20,7 @@ const router = createRouter()
     }),
     (c) => {
       return c.json({
-        message: "Hono API",
+        message: "Hono API with Better Auth",
       }, HttpStatusCodes.OK);
     },
   );
