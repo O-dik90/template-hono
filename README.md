@@ -1,11 +1,16 @@
 learning HONO-stack
 
+features:
+- Better Auth
+- Open API with scalar
+- Zod validation
+- Drizzle Connector
 
 ```
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 ```
 
 ```
-open http://localhost:3000
+open http://localhost:9999
 ```
